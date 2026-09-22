@@ -104,6 +104,9 @@ app.use("/", userRouter); //all those paths that start from / will use userRoute
 
 app.use("/ai", aiRouter); //all those paths that start from /ai will use aiRouter(./routes/ai.js)
 
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 
 app.get("/privacy", (req, res) => {
     res.render("privacy.ejs");
