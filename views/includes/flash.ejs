@@ -1,0 +1,20 @@
+<!--if success exists(res.locals.success is actually an array) and there is some value in success i.e. it's length>0 
+then only display this flash msg-->
+<% if (success && success.length) { %>  
+    <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert"> <!--from bootstrap, alert-dismissible fade show is for dismissing the msg-->
+        <%= success %>
+        <!--button to help dismiss the alert flash msg-->
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div> 
+<% } %>
+
+<!--if error exists(res.locals.error is actually an array) and there is some value in error i.e. it's length>0 
+then only display this flasg msg-->
+<% if(error && error.length) { %> 
+    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+        <%= error %>
+        <!--button to help dismiss the alert flash msg-->
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+

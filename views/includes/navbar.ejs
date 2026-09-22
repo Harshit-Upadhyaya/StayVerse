@@ -1,0 +1,110 @@
+<nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+
+    <!-- Logo -->
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i>
+    </a>
+
+        <!-- Mobile search -->
+    <form
+      class="mobile-search"
+      role="search"
+      action="/listings"
+      method="GET"
+    >
+      <input
+        class="form-control"
+        type="search"
+        name="search"
+        placeholder="Search destinations"
+        value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
+      />
+
+      <button class="btn" type="submit">
+        <i class="fa-solid fa-magnifying-glass-location"></i>
+        <span>Search</span>
+      </button>
+    </form>
+
+    <!-- Mobile menu button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <!-- Main navigation -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <!-- Explore -->
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+
+
+      <!-- Search -->
+      <div class="navbar-nav ms-auto navbar-search"> <!--ms auto is margin start auto, to shift these options to right side-->
+        <form
+          class="d-flex"
+          role="search"
+          action="/listings"
+          method="GET"
+        >
+          <input
+            class="form-control me-2 search-input"
+            type="search"
+            name="search"
+            placeholder="Search destinations"
+            value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
+          />
+
+          <button class="btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass-location"></i>
+            Search
+          </button>
+        </form>
+      </div>
+
+
+      <!-- Right side links -->
+      <div class="navbar-nav ms-auto navbar-links"> <!--ms auto is margin start auto, to shift these options to right side-->
+
+        <a class="nav-link" href="/ai">
+          <i class="fa-solid fa-robot"></i>
+          AI Assistant
+        </a>
+
+        <a class="nav-link" href="/listings/new">
+          StayVerse your home
+        </a>
+
+        <!-- if req.user not exists (undefined) then display signup and login options-->
+        <% if(!currUser) { %>
+          <a class="nav-link" href="/signup">
+            <b>Sign up</b>
+          </a>
+
+          <a class="nav-link" href="/login">
+            <b>Log in</b>
+          </a>
+
+        <% } %>
+
+        <!-- if req.user exists i.e. user is logged in then display logout option -->
+        <% if(currUser) { %>
+          <a class="nav-link" href="/logout">
+            <b>Log out</b>
+          </a>
+
+        <% } %>
+
+      </div>
+
+    </div>
+  </div>
+</nav>
